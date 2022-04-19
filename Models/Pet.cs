@@ -29,9 +29,10 @@ namespace PetShop.Data
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Giá")]
         [Column(TypeName = "decimal(18,2")]
+
         [DataType(DataType.Currency)]
         public decimal Gia { get; set; }
-
+        [DisplayFormat(DataFormatString = "{0:#,0}")]
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Giới tính")]
         public string GioiTinh { get; set; }
