@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PetShop.Data.Pet>
+
+@{
+    ViewData["Title"] = "Trang Chủ";
+}
+<div class="row text-center">
+    <img src="https://happypaws.vn/wp-content/uploads/banner-welcome.png" />
+</div>
+
+<div class="headline">
+    <h3>Thú cưng bán phổ biến</h3>
+    <button class="btn1 text-center bg-warning"></button>
+</div>
+
+<div class="row">
+    @foreach (var item in Model.Take(4))
+    {
+    <partial name="ProductTemplate" model="item" />
+    }
+</div>

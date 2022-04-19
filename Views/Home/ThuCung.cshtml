@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Doanh Mục";
+}
+
+@model PetShop.Models.ViewModels.PetListViewModel
+
+<div class="row">
+    @foreach (var item in Model.Pet)
+    {
+        <partial name="ProductTemplate" model="item" />
+    }
+</div>
+<div class="row m-1 p-1">
+    <div id="speciesS" class="col-3">
+        <vc:species-navigation />
+    </div>
+</div>
+    <div page-model="@Model.PagingInfo" page-action="ThuCung" page-classes-enabled="true"
+         page-class="btn btn-floating" page-class-normal="btn-outline-warning btn-floating" 
+         page-class-selected="btn-warning btn-floating" page-url-species="@Model.CurrentSpecies" class="btn-group pull-right m-1">
+    </div>

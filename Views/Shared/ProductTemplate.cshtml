@@ -1,0 +1,16 @@
+﻿@model Pet
+
+<div class="col-3">
+    <div class="card my-2 store-card">
+        <a class="a-cleanup" asp-controller="Pets" asp-action="Details" asp-route-id="@Model.Id">
+            <img src="https://sieupet.com/sites/default/files/giong_meo_ragdoll9.jpg" class="card-img-top card-img-custom">
+        </a>
+        <div class="card-body" style="height: 6em;">
+            <h5 class="mb-3">@Model.ThuCung</h5>
+        </div>
+        <div class="card-body">
+            <span class="card-text">Giá: @string.Format("{0:#,0}", Model.Gia) đ</span>
+            <a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-success float-right store-btn"><i class="fas fa-shopping-cart"></i> Mua</a>
+        </div>
+    </div>
+</div>

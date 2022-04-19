@@ -1,0 +1,12 @@
+﻿@model IEnumerable<string>
+
+@foreach (string species in Model)
+{
+<a class="btn btn-block
+    @(species == ViewBag.SelectedSpecies ? "btn-primary": "btn-outline-primary")"
+   asp-action="ThuCung" asp-controller="Home"
+   asp-route-species="@species"
+   asp-route-ProductPage="1">@species
+</a>
+
+    }

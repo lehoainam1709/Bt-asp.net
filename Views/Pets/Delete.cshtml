@@ -1,0 +1,51 @@
+﻿@model PetShop.Data.Pet
+
+@{
+    ViewData["Title"] = "Xóa đơn hàng";
+}
+
+<link rel="stylesheet" href="~/css/form.css" />
+<h3>Bạn có muốn xóa đơn hàng này không ?</h3>
+
+<div class="table">
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ThuCung)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ThuCung)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NgayMua)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NgayMua)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GiongLoai)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GiongLoai)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-primary">Trở về</a>
+    </form>
+</div>
