@@ -1,4 +1,8 @@
 ﻿@model Pet
+@{
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+ }
+
 
 <div class="col-3">
     <div class="card my-2 store-card">
@@ -9,8 +13,14 @@
             <h5 class="mb-3">@Model.ThuCung</h5>
         </div>
         <div class="card-body">
-            <span class="card-text">Giá: @string.Format("{0:#,0}", Model.Gia) đ</span>
-            <a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-success float-right store-btn"><i class="fas fa-shopping-cart"></i> Mua</a>
+            <span class="card-text">Giá: @String.Format(format, "{0:c0}", Model.Gia)</span>
+            <form id="@Model.Id" asp-page="/MyCart" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-success float-right store-btn">
+                    <i class="fas fa-shopping-cart"></i> Mua
+                </button>             
+            </form>
         </div>
     </div>
 </div>

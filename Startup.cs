@@ -30,6 +30,9 @@ namespace PetShop
             services.AddDbContext<PetShopContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PetShopContext")));
             services.AddScoped<IPetShopRepository,EFPetShopRepository>();
+            services.AddRazorPages();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,26 +50,25 @@ namespace PetShop
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
                 endpoints.MapControllerRoute("spepage", "{species}/{ProductPage:int}",
                 new { Controller = "Home", action = "ThuCung" });
+                endpoints.MapControllerRoute("default", "{controller}/{action}",
+                new { controller = "Home", action = "Index" });
                 endpoints.MapControllerRoute("page", "{ProductPage:int}",
                 new { Controller = "Home", action = "ThuCung", ProductPage = 1 });
                 endpoints.MapControllerRoute("species", "{species}",
                 new { Controller = "Home", action = "ThuCung", ProductPage = 1 });
                 endpoints.MapControllerRoute("pagination", "Pet/{ProductPage}",
                 new { Controller = "Home", action = "ThuCung", ProductPage = 1 });
-                endpoints.MapDefaultControllerRoute();               
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
 
             SeedData.EnsurePopulated(app);

@@ -2,7 +2,9 @@
 @model PetShop.Data.PetSpeciesViewModel
 
 @{
-    ViewData["Title"] = "Đơn hàng";
+    ViewData["Title"] = "Đơn hàng";    
+
+      
 }
 <link rel="stylesheet" href="~/css/form.css" />
 <h1>Đơn hàng</h1>
@@ -18,7 +20,7 @@
         </select>
         <input type="text" name="KiTuTimKiem" />
         <div class="my-1">
-            <input type="number" name="minPrice" step="1" placeholder="Giá thấp tối đa" class="form-control-sm col-5" />&nbsp;&#8212;&nbsp;<input type="number" name="maxPrice" step="1" placeholder="Giá cao tối đa" class="form-control-sm col-5" />
+            <input type="number" name="minPrice" step="1" placeholder="Cao hơn" class="form-control-sm col-5" />&nbsp;&#8212;&nbsp;<input type="number" name="maxPrice" step="1" placeholder="Thấp hơn" class="form-control-sm col-5" />
         </div>
         <input type="submit" value="Search" />
     </p>
@@ -42,36 +44,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.TenThuCung[0].GioiTinh)
             </th>
-            
+
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.TenThuCung)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThuCung)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayMua)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiongLoai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GioiTinh)
-            </td>
-           
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="bi bi-pencil-square"></i></a>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Thông tin"><i class="bi bi-info-square"></i></a>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="bi bi-trash"></i> </a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThuCung)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayMua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiongLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="bi bi-pencil-square"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Thông tin"><i class="bi bi-info-square"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="bi bi-trash"></i> </a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

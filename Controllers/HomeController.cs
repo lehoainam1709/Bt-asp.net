@@ -13,7 +13,7 @@ namespace PetShop.Controllers
 {
     public class HomeController : Controller
     {
-        public int PageSize = 3;
+        public int PageSize = 2;
         private IPetShopRepository repository;
         public HomeController(IPetShopRepository repo)
         {

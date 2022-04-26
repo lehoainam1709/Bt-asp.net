@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace PetShop.Data
@@ -28,6 +29,7 @@ namespace PetShop.Data
         [Range(1, 1000000000)]
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Giá")]
+        [DisplayFormat(DataFormatString = "{0:#,0} đ")]
         [Column(TypeName = "decimal(18,2")]
         [DataType(DataType.Currency)]
         public decimal Gia { get; set; }

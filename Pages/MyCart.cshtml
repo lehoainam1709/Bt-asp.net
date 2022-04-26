@@ -1,0 +1,37 @@
+﻿@page
+@model MyCartModel
+<h2>Giỏ hàng</h2>
+<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>Số Lượng</th>
+            <th>Sản phẩm</th>
+            <th class="text-right">Giá</th>
+            <th class="text-right">Tổng cộng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.myCart.Lines)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Pet.ThuCung</td>
+                <td class="text-right">@line.Pet.Gia</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Pet.Gia))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Tổng cộng: </td>
+            <td class="text-right">
+                @Model.myCart.ComputeTotalValue()
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn btn-info" href="@Model.ReturnUrl">Mua thêm</a>
+</div>
