@@ -31,9 +31,10 @@ namespace PetShop.Data
         [Display(Name = "Giá")]
         [DisplayFormat(DataFormatString = "{0:#,0} đ")]
         [Column(TypeName = "decimal(18,2")]
+        [DisplayFormat(DataFormatString = "{0:#,0}")]
         [DataType(DataType.Currency)]
         public decimal Gia { get; set; }
-
+        
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Giới tính")]
         public string GioiTinh { get; set; }
