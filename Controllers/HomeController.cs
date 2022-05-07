@@ -20,11 +20,6 @@ namespace PetShop.Controllers
             repository = repo;
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult Contact()
         {
             return View();

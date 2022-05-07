@@ -3,11 +3,20 @@
 @{
     ViewData["Title"] = "Thông tin đơn hàng";
 }
+@section breadcrum{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a asp-action="Index" asp-controller="Home" style="text-decoration: none">Trang Chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">@Model.ThuCung</strong></div>
+            </div>
+        </div>
+    </div>
+}
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card mb-12">
-            <div class="row g-0">               
+            <div class="row g-0">
                 <div class="col-md-4">
                     <img src="https://sieupet.com/sites/default/files/giong_meo_ragdoll9.jpg" width="100%" alt="@Model.ThuCung">
                 </div>
@@ -23,9 +32,6 @@
                             <b>Giới tính:</b> @Model.GioiTinh
                         </p>
                         <p class="card-text">
-                            <b>Thời gian đưa lên:</b> @Model.NgayMua
-                        </p>
-                        <p class="card-text">
                             <b>Giá:</b> @string.Format("{0:#,0}", Model.Gia) đ
                         </p>
                     </div>
@@ -33,11 +39,9 @@
                 <div class="col-md-12">
                     <div class="card-footer">
                         <p class="card-text">
-                            <a class="btn btn-primary float-right" asp-action="Index">
+                            <a class="btn btn-primary" asp-action="Index">
                                 <i class="bi bi-arrow-left-circle"></i> Trở về
                             </a>
-                            <a class="btn btn-success"
-                              asp-action="Index" asp-route-id="@Model.Id"><i class="fas fa-shopping-cart"></i> Mua</a>
                         </p>
                     </div>
                 </div>

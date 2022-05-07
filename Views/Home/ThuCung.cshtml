@@ -4,18 +4,29 @@
 
 @model PetShop.Models.ViewModels.PetListViewModel
 
-<div class="row">
-    @foreach (var item in Model.Pet)
-    {
-        <partial name="ProductTemplate" model="item" />
-    }
-</div>
+@section breadcrum{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a asp-action="Index" asp-controller="Home" style="text-decoration: none">Trang Chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Thú Cưng</strong></div>
+            </div>
+        </div>
+    </div>
+}
 <div class="row m-1 p-1">
-    <div id="speciesS" class="col-3">
+    <div id="categories" class="col-3">
         <vc:species-navigation />
     </div>
-</div>
+
+        @foreach (var item in Model.Pet)
+        {
+            <partial name="ProductTemplate" model="item" />
+        }
+    </div>
+
+
     <div page-model="@Model.PagingInfo" page-action="ThuCung" page-classes-enabled="true"
-         page-class="btn border" page-class-normal="btn-outline-primary" 
+         page-class="btn border" page-class-normal="btn-outline-primary"
          page-class-selected="btn-primary" page-url-species="@Model.CurrentSpecies" class="btn-group pull-right m-1 pl-4">
     </div>
+

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Globalization;
 using System.Threading.Tasks;
 
 namespace PetShop.Data
@@ -18,7 +17,9 @@ namespace PetShop.Data
         public string ThuCung { get; set; }
 
         [Display(Name = "Ngày mua")]
+        [Required(ErrorMessage = "Không được để trống")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime NgayMua { get; set; }
 
         [Required(ErrorMessage = "Không được để trống")]
@@ -31,7 +32,6 @@ namespace PetShop.Data
         [Display(Name = "Giá")]
         [DisplayFormat(DataFormatString = "{0:#,0} đ")]
         [Column(TypeName = "decimal(18,2")]
-        [DisplayFormat(DataFormatString = "{0:#,0}")]
         [DataType(DataType.Currency)]
         public decimal Gia { get; set; }
         

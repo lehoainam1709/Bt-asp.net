@@ -1,4 +1,14 @@
-﻿<link href="~/css/Contact.css" rel="stylesheet" />
+﻿@section breadcrum{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a asp-action="Index" asp-controller="Home" style="text-decoration: none">Trang Chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Liên hệ</strong></div>
+            </div>
+        </div>
+    </div>
+}
+
+<link href="~/css/Contact.css" rel="stylesheet" />
 
 <section class="section gray-bg" id="contactus">
     <div class="container">
@@ -56,7 +66,7 @@
                     <p>Cao Đẳng Kỹ Thuật Công Nghệ Nha Trang, <br>Khánh Hòa</p>
                 </div>
                 <div class="contact-name">
-                     <h5><i class="bi bi-telephone-fill pr-2"></i>Điện thoại</h5>
+                    <h5><i class="bi bi-telephone-fill pr-2"></i>Điện thoại</h5>
                     <p>01664977732</p>
                 </div>
                 <div class="social-share nav">
@@ -76,5 +86,5 @@
 </section>
 
 <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.6931297705983!2d109.17095381476263!3d12.201271491364528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170674637000ac9%3A0x51fd8a017075f390!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEvhu7kgVGh14bqtdCBDw7RuZyBOZ2jhu4cgTmhhIFRyYW5n!5e0!3m2!1svi!2s!4v1650262468094!5m2!1svi!2s" width="1500" height="1000" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.6931297705983!2d109.17095381476263!3d12.201271491364528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170674637000ac9%3A0x51fd8a017075f390!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEvhu7kgVGh14bqtdCBDw7RuZyBOZ2jhu4cgTmhhIFRyYW5n!5e0!3m2!1svi!2s!4v1650262468094!5m2!1svi!2s" width="1300" height="700" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>

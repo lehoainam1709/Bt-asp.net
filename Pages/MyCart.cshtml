@@ -1,5 +1,9 @@
 ﻿@page
 @model MyCartModel
+@{
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
 <h2>Giỏ hàng</h2>
 <table class="table table-bordered">
     <thead class="thead-light">
@@ -13,21 +17,21 @@
     <tbody>
         @foreach (var line in Model.myCart.Lines)
         {
-            <tr>
-                <td class="text-center">@line.Quantity</td>
-                <td class="text-left">@line.Pet.ThuCung</td>
-                <td class="text-right">@line.Pet.Gia</td>
-                <td class="text-right">
-                    @((line.Quantity * line.Pet.Gia))
-                </td>
-            </tr>
+        <tr>
+            <td class="text-center">@line.Quantity</td>
+            <td class="text-left">@line.Pet.ThuCung</td>
+            <td class="text-right">@String.Format(format, "{0:c0}", line.Pet.Gia)</td>
+            <td class="text-right">
+                @String.Format(format, "{0:c0}", ((line.Quantity * line.Pet.Gia)))
+            </td>
+        </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3" class="text-right">Tổng cộng: </td>
             <td class="text-right">
-                @Model.myCart.ComputeTotalValue()
+                @String.Format(format, "{0:c0}",Model.myCart.ComputeTotalValue())
             </td>
         </tr>
     </tfoot>
