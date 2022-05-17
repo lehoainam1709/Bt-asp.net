@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace PetShop
 {
@@ -30,9 +31,12 @@ namespace PetShop
             services.AddDbContext<PetShopContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PetShopContext")));
             services.AddScoped<IPetShopRepository,EFPetShopRepository>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
+            services.AddScoped<MyCart>(sp => MySessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

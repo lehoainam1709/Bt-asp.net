@@ -1,0 +1,34 @@
+﻿@model Order
+
+<p>Hãy nhập thông tin:</p>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Checkout" method="post">
+    <div class="form-group">
+        <label>Tên:</label><input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Địa chỉ:</label><input asp-for="address" class="form-control" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Số điện thoại:</label><input asp-for="PhoneNumber" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label>Thành phố:</label><input asp-for="City" class="form-control" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Quận, huyện:</label><input asp-for="Town" class="form-control" />
+        </div>
+        <div class="form-group col-md-4">
+            <label>Mã bưu điện:</label><input asp-for="Zip" class="form-control" />
+        </div>
+        <div class="form-group col-md-2">
+            <label>Đất nước:</label><input asp-for="Country" class="form-control" />
+        </div>
+    </div>
+    <div class="text-right">
+        <input class="btn btn-primary" type="submit" value="Thanh toán" />
+    </div>
+</form>

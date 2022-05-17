@@ -8,22 +8,35 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a asp-action="Index" asp-controller="Home" style="text-decoration: none">Trang Chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Thú Cưng</strong></div>
+                <div class="col-md-12 mb-0"><i class="fa fa-home pr-1"></i><a asp-action="Index" asp-controller="Home" style="text-decoration: none">Trang Chủ</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Thú Cưng</strong></div>
             </div>
         </div>
     </div>
 }
 <div class="row m-1 p-1">
-    <div id="categories" class="col-3">
-        <vc:species-navigation />
-    </div>
-
-        @foreach (var item in Model.Pet)
-        {
-            <partial name="ProductTemplate" model="item" />
-        }
-    </div>
-
+    
+        <div id="categories" class="col-3">
+            <div class="border p-4 rounded mb-4">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Danh mục</h3>
+                <div>
+                    <vc:species-navigation />
+                </div>
+            </div>
+        
+            <div class="border p-4 rounded mb-4">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Tìm kiếm</h3>
+                <form asp-controller="Home" asp-action="ThuCung" method="get">                  
+                        <input class="form-control mb-2" placeholder="Tìm kiếm" type="text" name="SearchString">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+   
+            @foreach (var item in Model.Pet)
+            {
+                <partial name="ProductTemplate" model="item" />
+            }
+</div>
 
     <div page-model="@Model.PagingInfo" page-action="ThuCung" page-classes-enabled="true"
          page-class="btn border" page-class-normal="btn-outline-primary"

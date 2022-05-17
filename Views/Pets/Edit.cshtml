@@ -2,14 +2,13 @@
 
 @{
     ViewData["Title"] = "Chỉnh sửa đơn hàng";
+    Layout = "_AdminLayout";
 }
-<link rel="stylesheet" href="~/css/form.css" />
 <h1>Chỉnh sửa đơn hàng</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <div class="form">
             <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
@@ -42,12 +41,17 @@
                     <span asp-validation-for="GioiTinh" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="ProfilePicture" class="control-label"></label>
+                    <input asp-for="ProfilePicture" class="form-control" />
+                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <input type="submit" value="Lưu" class="btn btn-success" />
                 </div>
             </form>
         </div>
     </div>
-</div>
+
 <div class="pt-2">
     <a asp-action="Index" class="btn btn-primary">Trở về</a>
 </div>

@@ -4,4 +4,29 @@
 // Write your JavaScript code.
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
+});
+
+$(document).ready(function () {
+    $('#myTable').DataTable({
+        "scrollY": "450px",
+        "scrollCollapse": true,
+        "paging": true
+    });
+});
+
+$('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 3
+        },
+        1000: {
+            items: 5
+        }
+    }
 })

@@ -15,5 +15,6 @@ namespace PetShop.Data
         }
 
         public DbSet<PetShop.Data.Pet> Pet { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

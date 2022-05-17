@@ -2,8 +2,8 @@
 
 @foreach (string species in Model)
 {
-<a class="btn btn-block
-    @(species == ViewBag.SelectedSpecies ? "btn-primary": "btn-outline-primary")"
+<a class="text-decoration-none text-secondary
+    @(species == ViewBag.SelectedSpecies ? "btn-white": "btn-outline-white")" style="display: flex; flex-direction: column"
    asp-action="ThuCung" asp-controller="Home"
    asp-route-species="@species"
    asp-route-ProductPage="1">@species

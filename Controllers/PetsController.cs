@@ -84,7 +84,7 @@ namespace PetShop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ThuCung,NgayMua,GiongLoai,Gia,GioiTinh")] Pet pet)
+        public async Task<IActionResult> Create([Bind("Id,ThuCung,NgayMua,GiongLoai,Gia,GioiTinh,ProfilePicture")] Pet pet)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace PetShop.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ThuCung,NgayMua,GiongLoai,Gia,GioiTinh")] Pet pet)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ThuCung,NgayMua,GiongLoai,Gia,GioiTinh,ProfilePicture")] Pet pet)
         {
             if (id != pet.Id)
             {

@@ -16,10 +16,9 @@ namespace PetShop.Data
         [Display(Name = "Thú cưng")]
         public string ThuCung { get; set; }
 
-        [Display(Name = "Ngày mua")]
+        [Display(Name = "Ngày tạo")]
         [Required(ErrorMessage = "Không được để trống")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime NgayMua { get; set; }
 
         [Required(ErrorMessage = "Không được để trống")]
@@ -38,5 +37,8 @@ namespace PetShop.Data
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Giới tính")]
         public string GioiTinh { get; set; }
+        [Required(ErrorMessage = "Không được để trống")]
+        [Display(Name = "Hình ảnh")]
+        public string ProfilePicture { get; set; }
     }
 }

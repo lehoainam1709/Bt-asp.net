@@ -4,32 +4,37 @@
     ViewData["Title"] = "Trang Chủ";
 }
 
-<div class="main">
-    <div class="background1">
+    <div class="shadow-lg">
        <img src="https://happypaws.vn/wp-content/uploads/banner-welcome.png" width="100%"/>
     </div>
-</div>
 
-<div class="headline">
-    <h3>Cún bán phổ biến</h3>
-    <button class="btn1 bg-warning"></button>
-</div>
+    <div class="headline">
+        <h3>Cún bán phổ biến</h3>
+        <button class="btn1 bg-warning"></button>
+    </div>
+    <div class="owl-carousel">
+            <div class="row">
+                @foreach (var item in Model.Where(b => b.GiongLoai == "Chó"))
+                {
+                    <partial name="ProductTemplate" model="item" />
+                }
+            </div>
+    </div>
 
-<div class="row">       
-    @foreach (var item in Model.Where(b => b.GiongLoai == "Chó"))
-    {
-        <partial name="ProductTemplate" model="item" />
-    }
-</div>
+    <div class="text-right mt-2">
+        <button class="btn btn-primary btn-rounded"><a class="text-decoration-none text-light" asp-action="ThuCung" asp-controller="Home">Xem thêm<i class="fa fa-arrow-right ml-2"></i></a></button>
+    </div>
+        <div class="headline">
+            <h3>Mèo bán phổ biến</h3>
+            <button class="btn1 bg-warning"></button>
+        </div>
 
-<div class="headline">
-    <h3>Mèo bán phổ biến</h3>
-    <button class="btn1 bg-warning"></button>
-</div>
-
-<div class="row">
-    @foreach (var item in Model.Where(b => b.GiongLoai == "Mèo"))
-    {
-        <partial name="ProductTemplate" model="item" />
-    }
-</div>
+        <div class="row">
+            @foreach (var item in Model.Where(b => b.GiongLoai == "Mèo"))
+            {
+                <partial name="ProductTemplate" model="item" />
+            }
+        </div>
+        <div class="text-right mt-2">
+            <button class="btn btn-primary btn-rounded"><a class="text-decoration-none text-light" asp-action="ThuCung" asp-controller="Home">Xem thêm<i class="fa fa-arrow-right ml-2"></i></a></button>
+        </div>

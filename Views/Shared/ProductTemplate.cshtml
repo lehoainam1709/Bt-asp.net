@@ -7,14 +7,14 @@
 <div class="col-3" data-aos="fade-up">
     <div class="card my-2 store-card">
         <a class="a-cleanup" asp-controller="Pets" asp-action="Details" asp-route-id="@Model.Id">
-            <img src="https://sieupet.com/sites/default/files/giong_meo_ragdoll9.jpg" class="card-img-top card-img-custom">
+            <img src="@Model.ProfilePicture" class="card-img-top card-img-custom">
         </a>
-        <div class="card-body">
-            <h5 class="mb-3" style="height: 6em;">@Model.ThuCung</h5>
-            <span class="card-text">@String.Format(format, "{0:c0}", Model.Gia)</span>
+        <div class="card-body">         
             <form id="@Model.Id" asp-page="/MyCart" method="post">
                 <input type="hidden" asp-for="Id" />
                 <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <h5 style="height: 5rem;">@Model.ThuCung</h5>
+                <span class="card-text">@String.Format(format, "{0:c0}", Model.Gia)</span>
                 <button type="submit" class="btn btn-success float-right store-btn">
                     <i class="fas fa-shopping-cart"></i> Mua
                 </button>

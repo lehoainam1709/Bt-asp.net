@@ -29,6 +29,7 @@ namespace PetShop.Data
                 GiongLoai = "Mèo",
                 Gia = 500000,
                 GioiTinh = "Đực",
+                ProfilePicture = "https://sieupet.com/sites/default/files/meo_xiem_hoang_gia2.jpg"
             },
             new Pet
             {
@@ -37,6 +38,7 @@ namespace PetShop.Data
                 GiongLoai = "Mèo",
                 Gia = 700000,
                 GioiTinh = "Cái",
+                ProfilePicture = "https://sieupet.com/sites/default/files/giong_meo_ragdoll9.jpg"
             }
             );
             context.SaveChanges();//lưu dữ liệu
