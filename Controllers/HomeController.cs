@@ -13,7 +13,7 @@ namespace PetShop.Controllers
 {
     public class HomeController : Controller
     {
-        public int PageSize = 4;
+        public int PageSize = 3;
         private IPetShopRepository repository;
 
         public string CurrentSpecies { get; private set; }
@@ -35,14 +35,14 @@ namespace PetShop.Controllers
                        select b;
             if (!string.IsNullOrEmpty(MinPrice))
             {
-                var min = int.Parse(MinPrice);
-                pets = pets.Where(b => b.Gia >= min);
+                var Min = int.Parse(MinPrice);
+                pets = pets.Where(b => b.Gia >= Min);
             }
 
             if (!string.IsNullOrEmpty(MaxPrice))
             {
-                var max = int.Parse(MaxPrice);
-                pets = pets.Where(b => b.Gia <= max);
+                var Max = int.Parse(MaxPrice);
+                pets = pets.Where(b => b.Gia <= Max);
             }
             if (!String.IsNullOrEmpty(SearchString))
             {

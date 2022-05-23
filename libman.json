@@ -9,6 +9,10 @@
     {
       "library": "OwlCarousel2@2.3.4",
       "destination": "wwwroot/lib/OwlCarousel2/"
+    },
+    {
+      "library": "owl-carousel@1.3.3",
+      "destination": "wwwroot/lib/owl-carousel/"
     }
   ]
 }

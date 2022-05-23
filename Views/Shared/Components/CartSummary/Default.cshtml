@@ -2,7 +2,7 @@
 <div class="position-relative">
     @if (Model.Lines.Count() > 0)
     {
-        <span class="position-absolute top-0 start-100 translate-middle badge badge-pill badge-danger" style="border-radius: 50%">
+        <span class="position-absolute top-0 end-0  badge border border-light rounded-pill badge-danger" style="border-radius: 50%; width: 24px">
             @if (Model.Lines.Sum(x => x.Quantity) >= 2)
             {
                 <text>@Model.Lines.Sum(x => x.Quantity)</text>

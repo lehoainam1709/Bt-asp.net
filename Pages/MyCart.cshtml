@@ -41,15 +41,15 @@
         <tr>
             <td colspan="3" class="text-right">Tổng cộng: </td>
             <td class="text-right">
-                @String.Format(format, "{0:c0}",Model.myCart.ComputeTotalValue())
+                @String.Format(format, "{0:c0}", Model.myCart.ComputeTotalValue())
             </td>
         </tr>
     </tfoot>
 </table>
 <div class="text-right">
-    <a class="btn btn-success" href="@Model.ReturnUrl">Mua thêm</a>
-    <a class="btn btn-info" asp-action="Checkout" asp-controller="Order">
-       Thanh toán
+    <a class="btn btn-success" href="@Model.ReturnUrl"><i class='fas fa-arrow-left mr-2'></i>Quay lại</a>
+    <a class="btn btn-danger" asp-action="Checkout" asp-controller="Order">
+       Thanh toán<i class="fa fa-check ml-2"></i>
     </a>
 
 </div>

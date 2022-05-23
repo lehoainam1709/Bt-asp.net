@@ -19,7 +19,7 @@ namespace PetShop.Controllers
         }
 
         // GET: Pets
-        public async Task<IActionResult> Index(string GiongLoaiThuCung, string KiTuTimKiem, string minPrice, string maxPrice)
+        public async Task<IActionResult> Index(string GiongLoaiThuCung, string KiTuTimKiem, string minPrice, string maxPrice, string StartDate, string EndDate)
         {
             // Use LINQ to get list of genres.
             IQueryable<string> genreQuery = from b in _context.Pet
@@ -45,6 +45,17 @@ namespace PetShop.Controllers
             {
                 var max = int.Parse(maxPrice);
                 pets = pets.Where(b => b.Gia <= max);
+            }
+            if (!string.IsNullOrEmpty(StartDate))
+            {
+                var startdate = DateTime.Parse(StartDate);
+                pets = pets.Where(b => b.NgayMua >= startdate);
+            }
+
+            if (!string.IsNullOrEmpty(EndDate))
+            {
+                var enddate = DateTime.Parse(EndDate);
+                pets = pets.Where(b => b.NgayMua <= enddate);
             }
             var PetSpeciesVM = new PetSpeciesViewModel
             {

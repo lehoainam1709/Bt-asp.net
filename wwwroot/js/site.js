@@ -6,27 +6,11 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
 
-$(document).ready(function () {
-    $('#myTable').DataTable({
-        "scrollY": "450px",
-        "scrollCollapse": true,
-        "paging": true
+function AddToCartAlert() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Đã thêm vào giỏ hàng',
+        showConfirmButton: false,
+        timer: 1500
     });
-});
-
-$('.owl-carousel').owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    responsive: {
-        0: {
-            items: 1
-        },
-        600: {
-            items: 3
-        },
-        1000: {
-            items: 5
-        }
-    }
-})
+}
