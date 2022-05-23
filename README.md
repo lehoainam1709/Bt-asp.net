@@ -1,4 +1,6 @@
 # Đây là một project về shop bán thú cưng
+# Giao diện trang chủ
+![image](https://user-images.githubusercontent.com/72543241/169776146-51f09922-9678-4d1b-b173-3f446c87fdbc.png)
 # Các công nghệ sử dụng trong project:
 1. Asp.net core MVC
 2. EF Core
