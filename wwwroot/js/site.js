@@ -14,3 +14,24 @@ function AddToCartAlert() {
         timer: 1500
     });
 }
+
+$(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+        loop: true,
+    });
+});
+
+var btn = $('#backtotop');
+
+$(window).scroll(function () {
+    if ($(window).scrollTop() > 300) {
+        btn.addClass('show');
+    } else {
+        btn.removeClass('show');
+    }
+});
+
+btn.on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: 0 }, '300');
+});

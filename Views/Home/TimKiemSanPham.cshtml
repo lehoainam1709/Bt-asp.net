@@ -1,0 +1,8 @@
+﻿@model IEnumerable<PetShop.Data.Pet>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <partial name="ProductTemplate" model="item" />
+    }
+</div>

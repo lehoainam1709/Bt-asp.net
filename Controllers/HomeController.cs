@@ -29,25 +29,8 @@ namespace PetShop.Controllers
             return View();
         }
 
-        public IActionResult ThuCung(string SearchString, string MinPrice, string MaxPrice, string species, int ProductPage = 1)
+        public IActionResult ThuCung(string species, int ProductPage = 1)
         {
-            var pets = from b in repository.Pet
-                       select b;
-            if (!string.IsNullOrEmpty(MinPrice))
-            {
-                var Min = int.Parse(MinPrice);
-                pets = pets.Where(b => b.Gia >= Min);
-            }
-
-            if (!string.IsNullOrEmpty(MaxPrice))
-            {
-                var Max = int.Parse(MaxPrice);
-                pets = pets.Where(b => b.Gia <= Max);
-            }
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                pets = pets.Where(s => s.ThuCung!.Contains(SearchString));
-            }
             var PetListVM = new PetListViewModel
             {
                 Pet = repository.Pet
@@ -78,6 +61,27 @@ namespace PetShop.Controllers
             return View(await pets.ToListAsync());          
         }
 
+        public async Task<IActionResult> TimKiemSanPham(string SearchString, string MinPrice, string MaxPrice)
+        {
+            var pets = from b in repository.Pet
+                       select b;
+            if (!string.IsNullOrEmpty(MinPrice))
+            {
+                var Min = int.Parse(MinPrice);
+                pets = pets.Where(b => b.Gia >= Min);
+            }
+
+            if (!string.IsNullOrEmpty(MaxPrice))
+            {
+                var Max = int.Parse(MaxPrice);
+                pets = pets.Where(b => b.Gia <= Max);
+            }
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                pets = pets.Where(s => s.ThuCung!.Contains(SearchString));
+            }
+            return View(await pets.ToListAsync());
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
