@@ -24,10 +24,16 @@
                 <h2 class="text-black">@Model.ThuCung</h2>
                 <p><b>Giống Loài:</b> @Model.GiongLoai</p>
                 <p class="mb-4"><b>Giới Tính:</b> @Model.GioiTinh</p>
+
                 <p>
                     <strong class="text-primary h4">
                         @String.Format(format, "{0:c0}", Model.Gia)
                     </strong>
+                </p>
+                <p>
+                    <div class="">
+                        <div class="center text-warning"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </div>
+                    </div>
                 </p>
                 <form id="@Model.Id" asp-page="/MyCart" method="post">
                     <div class="mb-5">

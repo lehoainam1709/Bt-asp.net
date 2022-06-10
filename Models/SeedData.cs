@@ -25,7 +25,7 @@ namespace PetShop.Data
             new Pet
             {
                 ThuCung = "Mèo Xiêm",
-                NgayMua = DateTime.Parse("2022-10-16"),
+                ThoiGian = DateTime.Parse("2022-10-16"),
                 GiongLoai = "Mèo",
                 Gia = 500000,
                 GioiTinh = "Đực",
@@ -34,7 +34,7 @@ namespace PetShop.Data
             new Pet
             {
                 ThuCung = "Mèo Ragdoll",
-                NgayMua = DateTime.Parse("2022-8-3"),
+                ThoiGian = DateTime.Parse("2022-8-3"),
                 GiongLoai = "Mèo",
                 Gia = 700000,
                 GioiTinh = "Cái",

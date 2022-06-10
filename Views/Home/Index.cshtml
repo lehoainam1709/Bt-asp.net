@@ -18,10 +18,11 @@
     {
         <div class="col-11" data-aos="fade-up">
             <div class="card my-2 store-card">
-                <a class="a-cleanup" asp-controller="Pets" asp-action="Details" asp-route-id="@item.Id">
+                <a class="a-cleanup" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
                     <img src="@item.ProfilePicture" class="card-img-top card-img-custom">
                 </a>
                 <div class="card-body">
+                    
                     <partial name="CartTemplate" model="item" />
                 </div>
             </div>
@@ -42,7 +43,7 @@
         {
         <div class="col-11" data-aos="fade-up">
             <div class="card my-2 store-card">
-                <a class="a-cleanup" asp-controller="Pets" asp-action="Details" asp-route-id="@item.Id">
+                <a class="a-cleanup" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
                     <img src="@item.ProfilePicture" class="card-img-top card-img-custom">
                 </a>
                 <div class="card-body">

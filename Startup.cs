@@ -32,11 +32,12 @@ namespace PetShop
                     options.UseSqlServer(Configuration.GetConnectionString("PetShopContext")));
             services.AddScoped<IPetShopRepository,EFPetShopRepository>();
             services.AddScoped<IOrderRepository, EFOrderRepository>();
-            services.AddRazorPages();
+            services.AddRazorPages();           
             services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddScoped<MyCart>(sp => MySessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +74,9 @@ namespace PetShop
                 new { Controller = "Home", action = "ThuCung", ProductPage = 1 });
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}",
+               "/Admin/Index");
             });
 
             SeedData.EnsurePopulated(app);

@@ -1,0 +1,30 @@
+﻿@page "/admin/pets/details/{id:long}"
+@{
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<h3 class="bg-info text-white text-center p-1">Thông tin</h3>
+<table class="table table-sm table-bordered table-striped">
+    <tbody>
+        <tr><th>Id</th><td>@Pet.Id</td></tr>
+        <tr><th>Hình ảnh</th><td><img src="@Pet.ProfilePicture" alt="@Pet.ThuCung" width="150" height="100" /></td></tr>
+        <tr><th>Thú cưng</th><td>@Pet.ThuCung</td></tr>
+        <tr><th>Giới tính</th><td>@Pet.GioiTinh</td></tr>
+        <tr><th>Giống loài</th><td>@Pet.GiongLoai</td></tr>
+        <tr><th>Giá</th><td>@String.Format(format, "{0:c0}", Pet.Gia)</td></tr>
+    </tbody>
+</table>
+<NavLink class="btn btn-warning" href="@EditUrl">Chỉnh sửa</NavLink>
+<NavLink class="btn-success" href="/admin/pets">Trở về</NavLink>
+@code {
+    [Inject]
+    public IPetShopRepository Repository { get; set; }
+    [Parameter]
+    public long Id { get; set; }
+    public Pet Pet { get; set; }
+    protected override void OnParametersSet()
+    {
+        Pet = Repository.Pet.FirstOrDefault(b => b.Id == Id);
+    }
+    public string EditUrl => $"/admin/pets/edit/{Pet.Id}";
+}

@@ -18,6 +18,9 @@ function AddToCartAlert() {
 $(document).ready(function () {
     $(".owl-carousel").owlCarousel({
         loop: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true
     });
 });
 
@@ -35,3 +38,12 @@ btn.on('click', function (e) {
     e.preventDefault();
     $('html, body').animate({ scrollTop: 0 }, '300');
 });
+
+$(document).ready(function () {
+    var output = document.getElementById('ImageUrlPreview');
+    output.src = $("#ProfilePicture").val();
+})
+$("#ProfilePicture").on("change", function () {
+    var output = document.getElementById("ImageUrlPreview");
+    output.src = $(this).val();
+})

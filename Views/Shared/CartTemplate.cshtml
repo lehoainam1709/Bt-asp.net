@@ -10,15 +10,18 @@
             <img src="@Model.ProfilePicture" class="card-img-top card-img-custom">
         </a>
         <div class="card-body">*@         
-            <form id="@Model.Id" asp-page="/MyCart" method="post">
-                <input type="hidden" asp-for="Id" />
-                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-                <h5 style="height: 5rem;">@Model.ThuCung</h5>
-                <span class="card-text">@String.Format(format, "{0:c0}", Model.Gia)</span>
-                <button type="submit" onclick="AddToCartAlert()" class="btn btn-success float-right store-btn">
-                    <i class="fas fa-shopping-cart"></i> Mua
-                </button>
-            </form>
+<form id="@Model.Id" asp-page="/MyCart" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+    <h5 style="height: 3rem;">@Model.ThuCung</h5>
+    <div class="">
+        <div class="center text-warning"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> </div>
+    </div>
+    <span class="card-text">@String.Format(format, "{0:c0}", Model.Gia)</span>
+    <button type="submit" onclick="AddToCartAlert()" class="btn btn-success float-right store-btn">
+        <i class="fas fa-shopping-cart"></i> Mua
+    </button>
+</form>
         @*</div>
         </div>
     </div>*@

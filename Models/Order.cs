@@ -22,5 +22,7 @@ namespace PetShop.Data
         public string Zip { get; set; }
         [Required(ErrorMessage = "Đất nước không được bỏ trống")]
         public string Country { get; set; }
+        [BindNever]
+        public bool Shipped { get; set; }
     }
 }

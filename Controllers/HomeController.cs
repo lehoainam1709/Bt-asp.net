@@ -61,26 +61,54 @@ namespace PetShop.Controllers
             return View(await pets.ToListAsync());          
         }
 
-        public async Task<IActionResult> TimKiemSanPham(string SearchString, string MinPrice, string MaxPrice)
+        public async Task<IActionResult> TimKiemSanPham(string SearchString, string minPrice, string maxPrice, string StartDate, string EndDate)
         {
             var pets = from b in repository.Pet
                        select b;
-            if (!string.IsNullOrEmpty(MinPrice))
+            if (!string.IsNullOrEmpty(minPrice))
             {
-                var Min = int.Parse(MinPrice);
-                pets = pets.Where(b => b.Gia >= Min);
+                var min = int.Parse(minPrice);
+                pets = pets.Where(b => b.Gia >= min);
             }
 
-            if (!string.IsNullOrEmpty(MaxPrice))
+            if (!string.IsNullOrEmpty(maxPrice))
             {
-                var Max = int.Parse(MaxPrice);
-                pets = pets.Where(b => b.Gia <= Max);
+                var max = int.Parse(maxPrice);
+                pets = pets.Where(b => b.Gia <= max);
+            }
+            if (!string.IsNullOrEmpty(StartDate))
+            {
+                var startdate = DateTime.Parse(StartDate);
+                pets = pets.Where(b => b.ThoiGian >= startdate);
+            }
+
+            if (!string.IsNullOrEmpty(EndDate))
+            {
+                var enddate = DateTime.Parse(EndDate);
+                pets = pets.Where(b => b.ThoiGian <= enddate);
             }
             if (!String.IsNullOrEmpty(SearchString))
             {
                 pets = pets.Where(s => s.ThuCung!.Contains(SearchString));
             }
             return View(await pets.ToListAsync());
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pet = await repository.Pet
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+
+            return View(pet);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

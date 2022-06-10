@@ -1,0 +1,83 @@
+﻿@page "/admin/pets/edit/{id:long}"
+@page "/admin/pets/create"
+@inherits OwningComponentBase<IPetShopRepository>
+<style>
+    div.validation-message {
+        color: rgb(220, 53, 69);
+        font-weight: 500
+    }
+</style>
+
+<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText</h3>
+<EditForm Model="Pet" OnValidSubmit="SavePet">
+    <DataAnnotationsValidator />
+    @if (Pet.Id != 0)
+    {
+        <div class="form-group">
+            <label>Id</label>
+            <input class="form-control" disabled value="@Pet.Id" />
+        </div>
+    }
+    <div class="form-group">
+        <label>Thú cưng</label>
+        <ValidationMessage For="@(() => Pet.ThuCung)" />
+        <InputText class="form-control" @bind-Value="Pet.ThuCung" />
+    </div>
+    <div class="form-group">
+        <label>Giới tính</label>
+        <ValidationMessage For="@(() => Pet.GioiTinh)" />
+        <InputText class="form-control" @bind-Value="Pet.GioiTinh" />
+    </div>
+    <div class="form-group">
+        <label>Giống loài</label>
+        <ValidationMessage For="@(() => Pet.GiongLoai)" />
+        <InputText class="form-control" @bind-Value="Pet.GiongLoai" />
+    </div>
+    <div class="form-group">
+        <label>Giá</label>
+        <ValidationMessage For="@(() => Pet.Gia)" />
+        <InputNumber class="form-control" @bind-Value="Pet.Gia" />
+    </div>
+    <div class="form-group">
+        <label>Url hình ảnh</label>
+        <ValidationMessage For="@(() => Pet.ProfilePicture)" />
+        <InputText class="form-control" @bind-Value="Pet.ProfilePicture" />
+    </div>
+    <div class="col-md-4 offset-4 text-center">
+        <img width="100%" id="ImageUrlPreview" />
+    </div>
+    <button type="submit" class="btn btn-@ThemeColor">Lưu</button>
+    <NavLink class="btn btn-success"
+             href="/admin/pets">Trở về</NavLink>
+</EditForm>
+
+@code {
+    public IPetShopRepository Repository => Service;
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+    [Parameter]
+    public long Id { get; set; } = 0;
+    public Pet Pet { get; set; } = new Pet();
+    protected override void OnParametersSet()
+    {
+        if (Id != 0)
+        {
+            Pet = Repository.Pet.FirstOrDefault(b => b.Id == Id);
+        }
+    }
+    public void SavePet()
+    {
+        if (Id == 0)
+        {
+            Repository.CreatePet(Pet);
+        }
+        else
+        {
+            Repository.SavePet(Pet);
+        }
+        NavManager.NavigateTo("/admin/pets");
+    }
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+    public string TitleText => Id == 0 ? "Thêm sản phẩm" : "Chỉnh sửa";
+}
+

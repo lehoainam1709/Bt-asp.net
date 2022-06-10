@@ -1,0 +1,77 @@
+﻿@page "/admin/pets"
+@page "/admin"
+@inherits OwningComponentBase<IPetShopRepository>
+@{
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<div class="pb-2">
+    <NavLink class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Thêm sản phẩm" href="/admin/pets/create"><i class="bi bi-plus-circle"></i> Tạo</NavLink>
+</div>
+
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Hình ảnh</th>
+            <th>Thú Cưng</th>
+            <th>Giống loài</th>
+            <th>Giá</th>
+            <td />
+        </tr>
+    </thead>
+    <tbody>
+        @if (PetData?.Count() > 0)
+        {
+            @foreach (Pet b in PetData)
+            {
+                <tr>
+                    <td>@b.Id</td>
+                    <td><img src="@b.ProfilePicture" alt="@b.ThuCung" width="150" height="100" /></td>
+                    <td>@b.ThuCung</td>
+                    <td>@b.GiongLoai</td>
+                    <td>@String.Format(format, "{0:c0}", b.Gia)</td>
+                    <td>
+                        <NavLink class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Thông tin"
+                                 href="@GetDetailsUrl(b.Id)">
+                            <i class="bi bi-info-square"></i>
+                        </NavLink>
+                        <NavLink class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"
+                                 href="@GetEditUrl(b.Id)">
+                            <i class="bi bi-pencil-square"></i>
+                        </NavLink>
+                        <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Xóa"
+                                @onclick="@(e => DeletePet(b))">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">Không có sản phẩm</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    public IPetShopRepository Repository => Service;
+    public IEnumerable<Pet> PetData { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+    public async Task UpdateData()
+    {
+        PetData = await Repository.Pet.ToListAsync();
+    }
+    public async Task DeletePet(Pet b)
+    {
+        Repository.DeletePet(b);
+        await UpdateData();
+    }
+    public string GetDetailsUrl(long id) => $"/admin/pets/details/{id}";
+    public string GetEditUrl(long id) => $"/admin/pets/edit/{id}";
+}

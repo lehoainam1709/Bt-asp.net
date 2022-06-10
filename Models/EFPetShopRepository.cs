@@ -9,5 +9,19 @@ namespace PetShop.Data
             context = ctx;
         }
         public IQueryable<Pet> Pet => context.Pet;
+        public void CreatePet(Pet b)
+        {
+            context.Add(b);
+            context.SaveChanges();
+        }
+        public void DeletePet(Pet b)
+        {
+            context.Remove(b);
+            context.SaveChanges();
+        }
+        public void SavePet(Pet b)
+        {
+            context.SaveChanges();
+        }
     }
 }
