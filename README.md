@@ -11,7 +11,7 @@
 1. Thêm sản phẩm vào giỏ hàng và thanh toán
 ![image](https://user-images.githubusercontent.com/72543241/169777098-8aa0862d-2021-4730-85d2-303b8d9fad12.png)
 
-2. Hiển thị danh mục theo giống loài
+2. Hiển thị sản phẩm theo danh mục
 ![image](https://user-images.githubusercontent.com/72543241/169779590-ca5af512-6212-4dde-82d3-2404b1875289.png)
 ![image](https://user-images.githubusercontent.com/72543241/169779809-ece7501d-a503-457b-8534-922cc731c2f9.png)
 
