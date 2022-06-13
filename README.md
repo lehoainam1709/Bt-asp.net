@@ -21,5 +21,5 @@
 # Các tính năng ở Admin Panel
 1. Thêm, xóa, sửa
 ![image](https://user-images.githubusercontent.com/72543241/173009048-635b753b-55c5-40ed-bc42-5cc4d753133f.png)
-2. Quản lí đơn hàng và giao hàng
-![image](https://user-images.githubusercontent.com/72543241/173009674-dad88ae4-c153-490a-b78d-90d9f9b2c48d.png)
+
+
